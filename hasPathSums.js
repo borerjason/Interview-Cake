@@ -50,3 +50,54 @@ const hasPathSum = function (root, sum) {
 };
 
 console.log(hasPathSum(sampleInputNode, 62));
+
+/*
+Example using stubbing
+
+const hasPathSum = function (node, targetSum) {
+  if (!node) return targetSum === 0;
+  targetSum -= node.val;
+  return hasPathSum(node.left, targetSum) || hasPathSum(node.right, targetSum);
+};
+
+
+const root = {
+  val: 5,
+  left: {
+    val: 3,
+    left: {
+      val: 4,
+      left: null,
+      right: null
+    },
+    right: {
+      val: 2,
+      right: null,
+      left: null
+    }
+  },
+  right: {
+    val: 8,
+    left: null,
+    right: null
+  },
+};
+// Path sums:
+// 12: 5->3->4
+// 10: 5->3->2
+// 13: 5->8
+// Assuming target sum of 12
+  // Step 1: 12 - 5 = 7
+  // Step 2: 7 - 3 = 4
+  // Step 3: 4 - 4 = 0
+  // Step 4: return true
+const hasPathSum = function(node, sum) {
+  // base condition: if no node, return whether the sum has decremented to exactly 0
+  // subtract the current node value from the running sum
+  // return whether recursively calling either the left branch OR the right branch resolves to true
+};
+// High Level Overview
+// Traverse to each leaf decrementing target sum by each nodes value along the way. Return whether decremented exactly to zero.
+// Big-O
+// Traverses all nodes. Despite some short-circuiting due to the OR clause, algo is effectively O(n).
+*/
