@@ -26,8 +26,33 @@ const sampleOutput2 = false;
 
 // Strategy:
 // keep track of a max and min value, check to see if the node satisfies the value, if it does, continue down the tree
-console.log(binarySearchTreeChecker(sampleInput1));
+//console.log(binarySearchTreeChecker(sampleInput1));
 
 
+// iterative strategy
+function iterativeBSTValidator(root) {
+  let stack = [];
+  let nodeWithBounds = {node: root, upper: Infinity, lower: -Infinity};
 
+  stack.push(nodeWithBounds);
 
+  while (stack.length) {
+    let currNode = stack.pop();
+    let { node, upper, lower } = currNode;
+
+    if (node.value <= lower || node.value >= upper) {
+      return false;
+    };
+
+    if (node.right) {
+      stack.push({node: node.right, upper: upper, lower: node.value });
+    }
+
+    if (node.left) {
+      stack.push({node: node.left, upper: node.value, lower: lower});
+    }
+  }
+  return true;
+};
+
+console.log(iterativeBSTValidator(sampleInput2));
