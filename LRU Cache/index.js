@@ -80,7 +80,6 @@ cache.get(2);
 
 /* Setup
 
-
 Strategy: Keep track of total items as counter, keep track of key/value in object, use a doubly linked list to hold priority.
 O(1): Since retrieving from object
 
