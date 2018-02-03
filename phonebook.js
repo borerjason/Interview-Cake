@@ -9,30 +9,38 @@
 
 
 const updatePhoneBook = (phonebook, names) => {
-  const nameObj = {};
+  const namesToRemove = {};
 
   for (let name of names) {
-    nameObj[name] = name;
+    namesToRemove[name] = name;
   }
-
-  const newArray = phonebook.filter((entry) => {
-    return !nameObj.hasOwnProperty(entry.name);
+  const indices = [];
+  const updatedPhonebook = phonebook.filter((entry, index) => {
+    if (!namesToRemove.hasOwnProperty(entry.name)) {
+      return true;
+    }
+    indices.push(index);
+    return false;
   });
 
-  
-  
-  return newArray
-}
+  for (let i of indices) {
+    for (let j = 0; j < updatedPhonebook.length; j += 1) {
+      if (updatedPhonebook[j].momsIndex > i) {
+        updatedPhonebook[j].momsIndex -= 1;
+      }
+    }
+  }
+  return updatedPhonebook;
+};
 
 
-const book = [{ name: 'chad', phone: 123, momsIndex: 2 }, { name: 'dave', phone: 333, momsIndex: null }, { name: 'Sally', phone: 444, momsIndex: null}];
+const book = [{ name: 'chad', phone: 123, momsIndex: 2 }, { name: 'dave', phone: 333, momsIndex: null }, { name: 'Sally', phone: 444, momsIndex: 3 }, { name: 'mary', phone: 333, momsIndex: null }];
 const names = ['dave'];
 
-const output = [{ name: 'chad', phone: 123, momsIndex: 1 }, { name: 'Sally', phone: 444, momsIndex: null }]
+const output = [{ name: 'chad', phone: 123, momsIndex: 1 }, { name: 'Sally', phone: 444, momsIndex: 2 }, { name: 'mary', phone: 333, momsIndex: null }]
 console.log(updatePhoneBook(book, names));
 
-// Remove dave from first array
-// Update moms Index for Jason because Sally is at a different place
+/*
+Strategy: Keep track of all indices removed. If somebody's momIndex was greater than the index removed then decrement their momIndex by 1.
 
-// need reference to what has changed 
 
