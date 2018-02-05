@@ -40,7 +40,7 @@ const reverseLinkedList2 = (linkedlist) => {
 
 
 const sampleInput = { value: 1, next: { value: 2, next: { value: 3, next: { value: 4, next: null } } } };
-console.log(reverseLinkedList(sampleInput));
+// console.log(reverseLinkedList(sampleInput));
 
 /*
 Input: LL head node
@@ -62,8 +62,20 @@ sampleInput: {value: 1, next: {value: 2, next: {value: 3, next: null}}};
   d. target.next = null; {value: 1, next: null}
   e. Next.next = target; Next = {value: 2, next: {value: 1, next: null}};
 
-  
-
-
-
 */
+
+const reverseLLOutofPlace = (LL) => {
+  let reversed = new Node(LL.value);
+  let reversedNext = null;
+  let currNode = LL.next
+
+  while (currNode) {
+    reversedNext = new Node(currNode.value)
+    reversedNext.next = reversed;
+    currNode = currNode.next;
+    reversed = reversedNext;
+ }  
+ return reversedNext;
+}
+
+console.log(reverseLLOutofPlace(sampleInput));
