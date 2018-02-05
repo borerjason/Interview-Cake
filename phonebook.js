@@ -25,7 +25,7 @@ const updatePhoneBook = (phonebook, names) => {
 
   for (let i of indices) {
     for (let j = 0; j < updatedPhonebook.length; j += 1) {
-      if (updatedPhonebook[j].momsIndex > i) {
+      if (updatedPhonebook[j].momsIndex >= i) {
         updatedPhonebook[j].momsIndex -= 1;
       }
     }
@@ -34,8 +34,8 @@ const updatePhoneBook = (phonebook, names) => {
 };
 
 
-const book = [{ name: 'chad', phone: 123, momsIndex: 2 }, { name: 'dave', phone: 333, momsIndex: null }, { name: 'Sally', phone: 444, momsIndex: 3 }, { name: 'mary', phone: 333, momsIndex: null }];
-const names = ['dave'];
+const book = [{ name: 'chad', phone: 123, momsIndex: 3 }, { name: 'jason', phone: 333, momsIndex: null }, { name: 'dave', phone: 333, momsIndex: null }, { name: 'Sally', phone: 444, momsIndex: 4 }, { name: 'mary', phone: 333, momsIndex: null }, ];
+const names = ['dave', 'jason'];
 
 const output = [{ name: 'chad', phone: 123, momsIndex: 1 }, { name: 'Sally', phone: 444, momsIndex: 2 }, { name: 'mary', phone: 333, momsIndex: null }]
 console.log(updatePhoneBook(book, names));
@@ -43,4 +43,4 @@ console.log(updatePhoneBook(book, names));
 /*
 Strategy: Keep track of all indices removed. If somebody's momIndex was greater than the index removed then decrement their momIndex by 1.
 
-
+*/
