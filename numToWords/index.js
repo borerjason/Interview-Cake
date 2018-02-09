@@ -50,8 +50,9 @@ const numToWords = (num) => {
       num = num % 1000000;
     }
   }
+  wordString += 'Dollars';
 
 return wordString;
 };
 
-console.log(numToWords(9911249))
+console.log(numToWords(21))
