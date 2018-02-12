@@ -19,25 +19,26 @@ Sample input = [4, 1, -2, 3, 1]
   currSum = 4; maxSum = 4;
 5. return 4;
 
-const input = [10, 7, -3, -10, 4, 2, 8, -2, 4, -5, -6]
+const input = '10, 7, -3, -10, 4, 2, 8, -2, 4, -5, -6'
 
 */
 
-const findMaxSum = (numbers) => {
+const findMaxSum = (lineOfInts) => {
+  let numArray = lineOfInts.split(' ').map(char => parseInt(char));
   let maxSum = 0;
   let currentSum = 0;
 
-  for (let i = 1; i < numbers.length; i += 1) {
-    currentSum += numbers[i];
+  for (let i = 1; i < numArray.length; i += 1) {
+    currentSum += numArray[i];
     maxSum = Math.max(currentSum, maxSum);
-    
+
     if (currentSum < 0) currentSum = 0;
   }
   return maxSum;
 
 };
 
-console.log(`Expect: ${findMaxSum([10, 7, -3, -10, 4, 2, 8, -2, 4, -5, -6])} --- to equal: 16`);
+console.log(`Expect: ${findMaxSum('10 7 -3 -10 4 2 8 -2 4 -5 -6')} --- to equal: 16`);
 
 /*
 
@@ -65,7 +66,7 @@ const numToWords = (num) => {
   let wordString = '';
 
   while (num > 0) {
-     if (num < 20) {
+    if (num < 20) {
       wordString += belowTwenty[num];
       num -= num;
     } else if (num < 100) {
@@ -106,6 +107,7 @@ const numToWords = (num) => {
 
   return wordString;
 };
+
 
 console.log(`Expect: ${numToWords(3)} --- to equal: ThreeDollars`);
 console.log(`Expect: ${numToWords(466)} --- to equal: FourHundredSixtySixDollars`);
