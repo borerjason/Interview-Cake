@@ -18,7 +18,7 @@ function flattenDictionary(dict) {
         }
         flat(newKey, value[nextKey]);
       }
-    }
+    } 
   }
   for (let key in dict) {
     flat(key, dict[key]);
