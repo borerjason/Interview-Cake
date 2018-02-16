@@ -28,14 +28,26 @@ var siteData = {
   ]
 }
 
+function sortById(users) {
+  return users.sort((a, b) => {
+    a.id - b.id;
+  })
+}
+
 //Returns an array of all eligible user ids
 //Eligibility rules:
 // 1) User was born in the current month
 // 2) User has vip account status
 function findEligibleUsers(data, currentMonth) {
-  return data.users.filter(user => {
+  const filteredUsers =  data.users.filter(user => {
     return user.birthMonth === currentMonth && user.vip === "true"
   });
+  const ids = [];
+
+  for (let user of filteredUsers) {
+    ids.push(user.id);
+  }
+  return ids;
 }
 
 console.log(findEligibleUsers(siteData, 11));
