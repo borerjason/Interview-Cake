@@ -62,3 +62,22 @@ for (let i = 0; i <= 4; i++) {
   setTimeout(function () { 
       console.log(i)}, 100);
 }
+
+
+// Example of closure:
+
+function x() {
+  let arr = [];
+
+  return function() {
+    return obj = {
+      "add": function(num) {
+            arr.push(num);
+      }, 
+      "show": arr
+    }
+  }
+}
+
+let func = x();
+
