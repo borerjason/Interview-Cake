@@ -68,6 +68,7 @@ console.log(isBalanced(treeBalanced));
 
 // Output: true if superbalanced, false if not
 
+
 // Strategy: 
   // Keep track of depth as we descend the tree
   // Once we reach leaf node, record depth
