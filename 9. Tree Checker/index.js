@@ -56,3 +56,55 @@ function iterativeBSTValidator(root) {
 };
 
 console.log(iterativeBSTValidator(sampleInput2));
+
+
+/* Third options
+
+function checkTree(node, min = -Infinity, max = Infinity) {
+    // write the body of your function here
+    if (node.value >= max || node.value <= min) {
+        return false;
+    }
+
+    if (node.left && !checkTree(node.left, min, node.value)) {
+        return false;
+    }
+
+    if (node.right && !checkTree(node.right, node.val, max)) {
+        return false;
+    }
+
+    return true;
+}
+
+// run your function through some test cases here
+// remember: debugging is half the battle!
+
+function BinaryTreeNode(value) {
+    this.value = value;
+    this.left  = null;
+    this.right = null;
+}
+
+BinaryTreeNode.prototype.insertLeft = function(value) {
+    this.left = new BinaryTreeNode(value);
+    return this.left;
+};
+
+BinaryTreeNode.prototype.insertRight = function(value) {
+    this.right = new BinaryTreeNode(value);
+    return this.right;
+};
+
+let tree = new BinaryTreeNode(10);
+let six = tree.insertLeft(6);
+six.insertLeft(2);
+six.insertRight();
+let fif = tree.insertRight(15);
+fif.insertLeft(12);
+fif.insertRight(20);
+
+
+console.log(checkTree(tree));
+
+*/
