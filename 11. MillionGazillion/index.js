@@ -25,7 +25,6 @@ class Trie {
 
     return isNewWord;
   }
-
 }
 
 const visited = new Trie;
